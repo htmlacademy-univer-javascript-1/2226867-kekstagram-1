@@ -80,7 +80,7 @@ const createWizard = () => {
 const similarWizards = Array.from({ length: SIMILAR_WIZARD_COUNT }, createWizard);
 similarWizards.forEach((val) => {
   const ent = Object.entries(val);
-  console.log(`[${ent[0]}]\n[${ent[1]}]\n[${ent[2]}]\n[${ent[3]}]`);
-  console.log(ent[4]);
+  // console.log(`[${ent[0]}]\n[${ent[1]}]\n[${ent[2]}]\n[${ent[3]}]`);
+  // console.log(ent[4]);
 });
 //console.log(similarWizards);

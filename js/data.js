@@ -1,4 +1,4 @@
-import {getRandomPositiveInteger, getRandomArrayElement} from './util.js';
+import {getRandomPositiveInteger, getRandomArrayElement, createRandomIdFromRangeGenerator} from './util.js';
 
 const NAMES = [
   'Иван',
@@ -51,9 +51,10 @@ const DESCRIPTIONS = [
 const SIMILAR_POST_COUNT = 4;
 const SIMILAR_COMMENT_COUNT = 4;
 
-let idNum = 0;
+const getCommentId= createRandomIdFromRangeGenerator(1, SIMILAR_COMMENT_COUNT*SIMILAR_POST_COUNT*1000);
+
 const createComment = () => ({
-  id: idNum++,
+  id: getCommentId(),
   avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svj`,
   message: getRandomArrayElement(COMMENTS),
   name: getRandomArrayElement(NAMES)
@@ -70,4 +71,4 @@ const createPost = () => {
   };
 };
 
-export {createPost, SIMILAR_POST_COUNT};
+export {createPost, SIMILAR_POST_COUNT, SIMILAR_COMMENT_COUNT};

@@ -48,20 +48,20 @@ const DESCRIPTIONS = [
   'Переправа'
 ];
 
-const SIMILAR_POST_COUNT = 4;
+const SIMILAR_POST_COUNT = 25;
 const SIMILAR_COMMENT_COUNT = 4;
 
 const getCommentId= createRandomIdFromRangeGenerator(1, SIMILAR_COMMENT_COUNT*SIMILAR_POST_COUNT*1000);
 
 const createComment = () => ({
   id: getCommentId(),
-  avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svj`,
+  avatar: `../img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
   message: getRandomArrayElement(COMMENTS),
   name: getRandomArrayElement(NAMES)
 });
-
-const createPost = () => {
-  const id=getRandomPositiveInteger(1, 25);
+const getPhotoId= createRandomIdFromRangeGenerator(1, 25);
+const createPost = (i=getPhotoId()) => {
+  const id=i;
   return{
     id: id,
     url: `photos/${id}.jpg`,

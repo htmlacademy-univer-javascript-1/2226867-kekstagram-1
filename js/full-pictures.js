@@ -1,3 +1,4 @@
+import {isEscapeKey} from './util.js';
 const body = document.querySelector('body');
 const buttonClose = document.querySelector('.big-picture__cancel');
 const bigPicture = document.querySelector('.big-picture');
@@ -12,7 +13,8 @@ const similarCommentTemplate = document.querySelector('#comment-template')
   .content
   .querySelector('li');
 
-const addClickMiniatureHandler = function(imgOpen, {url, description, likes, comments}){
+
+const MiniatureClickHandler = function(imgOpen, {url, description, likes, comments}){
   imgOpen.addEventListener('click', () => {
     bigPicture.classList.remove('hidden');
     img.src=url;
@@ -30,24 +32,24 @@ const addClickMiniatureHandler = function(imgOpen, {url, description, likes, com
       newComment.querySelector('p').textContent=comments[i].message;
       commentsList.append(newComment);
     }
+    buttonClose.addEventListener('click', closeFullPicture);
+    document.addEventListener('keydown', onEscapeKey);
   });
 };
 
-buttonClose.addEventListener('click', ()=> {
-  closeFullPicture();
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.keyCode === 27) {
+function onEscapeKey () {
+  if (isEscapeKey) {
     closeFullPicture();
   }
-});
+}
 
 function closeFullPicture(){
   commentsList.innerHTML='';
   bigPicture.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
+  buttonClose.removeEventListener('click', closeFullPicture);
+  document.removeEventListener('keydown', onEscapeKey);
 }
 
-export {addClickMiniatureHandler};
+export {MiniatureClickHandler};
 

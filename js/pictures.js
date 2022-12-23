@@ -1,5 +1,5 @@
 import {createPost, SIMILAR_POST_COUNT} from './data.js';
-import {addClickMiniatureHandler} from './full-pictures.js';
+import {MiniatureClickHandler} from './full-pictures.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const similarPosts = Array.from({ length: SIMILAR_POST_COUNT }, createPost);
@@ -16,7 +16,7 @@ similarPosts.forEach(({url, description, likes, comments}) => {
   postElement.querySelector('.picture__comments').textContent = comments.length;
   postElement.querySelector('.picture__likes').textContent = likes;
   similarListFragment.appendChild(postElement);
-  addClickMiniatureHandler(postElement,{url, description, likes, comments});
+  MiniatureClickHandler(postElement,{url, description, likes, comments});
 });
 
 picturesContainer.appendChild(similarListFragment);

@@ -9,6 +9,10 @@ const similarPictureTemplate = document.querySelector('#picture')
   .querySelector('.picture');
 
 similarPosts.forEach(({url, description, likes, comments}) => {
+  createNewPicture({url, description, likes, comments});
+});
+
+function createNewPicture({url, description, likes, comments}){
   const postElement = similarPictureTemplate.cloneNode(true);
   const img = postElement.querySelector('.picture__img');
   img.src = url;
@@ -17,6 +21,8 @@ similarPosts.forEach(({url, description, likes, comments}) => {
   postElement.querySelector('.picture__likes').textContent = likes;
   similarListFragment.appendChild(postElement);
   MiniatureClickHandler(postElement,{url, description, likes, comments});
-});
+}
 
 picturesContainer.appendChild(similarListFragment);
+
+export {createNewPicture};

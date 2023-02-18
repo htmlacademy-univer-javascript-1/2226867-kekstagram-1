@@ -1,6 +1,7 @@
 import {MiniatureClickHandler} from './full-pictures.js';
 import { getData } from './api.js';
 import { showAlert, RERENDER_DELAY } from './util.js';
+import './preview.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const similarListFragment = document.createDocumentFragment();

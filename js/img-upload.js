@@ -143,10 +143,9 @@ const changeEffectIntens = () => {
 };
 
 uploadOpenElement.addEventListener('change', (evt) => {
+  evt.preventDefault();
   document.addEventListener('keydown', onOverlayEscKeydown);
-
   uploadCloseElement.addEventListener('click', closeOverlayImage);
-
   scaleControl.value = `${100}%`;
   editedPicture.style.transform = `scale(${1})`;
   buttonScaleSmaller.addEventListener('click', changeScale);
@@ -169,7 +168,6 @@ uploadOpenElement.addEventListener('change', (evt) => {
     changeEffectIntens();
   });
 
-  evt.preventDefault();
   form.addEventListener('submit', submitListener);
   document.body.classList.add('modal-open');
   overlayImage.classList.remove('hidden');

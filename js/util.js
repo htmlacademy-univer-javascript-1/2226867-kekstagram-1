@@ -50,4 +50,15 @@ const showAlert = (message, alertTime) => {
   }
 };
 
-export {isEscapeKey, getRandomPositiveInteger, getRandomArrayElement, createRandomIdFromRangeGenerator, showAlert};
+const RERENDER_DELAY = 500;
+// Источник - https://www.freecodecamp.org/news/javascript-debounce-example
+function debounce (callback, timeoutDelay = RERENDER_DELAY) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export {isEscapeKey, getRandomPositiveInteger, getRandomArrayElement,
+  createRandomIdFromRangeGenerator, showAlert, debounce, RERENDER_DELAY};
